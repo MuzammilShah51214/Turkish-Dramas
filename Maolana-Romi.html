@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M-ShahTV - Maulana-Rumi </title>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WK6VRPBHEH"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-WK6VRPBHEH');
+    </script>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <script type='text/javascript' src="https://cdn.jsdelivr.net/npm/afterglowplayer@1/dist/afterglow.min.js"></script>
+    
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <style>
+        :root {
+            --primary: #005aff;
+            --secondary: #ff3c8c;
+            --accent: #41a5ff;
+            --dark: #121212;
+            --darker: #0a0a0a;
+            --light: #f8f9fa;
+            --success: #00cc66;
+            --warning: #fcc200;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            color: var(--light);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        .brand-header {
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .brand-logo {
+            font-weight: 800;
+            font-size: 2rem;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .brand-logo i {
+            margin-right: 10px;
+            font-size: 1.8rem;
+        }
+        
+        /* Search Bar */
+        .search-container {
+            max-width: 600px;
+            margin: 20px auto;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 0 3px rgba(65, 165, 255, 0.3);
+        }
+        
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        /* Season Navigation */
+        .season-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .season-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .season-btn:hover, .season-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Quality Cards */
+        .quality-section {
+            padding: 20px 0;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: white;
+            font-weight: 600;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            margin: 8px auto 0;
+        }
+        
+        .quality-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+        
+        .quality-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            overflow: hidden;
+            width: 180px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+        }
+        
+        .quality-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.12);
+        }
+        
+        .quality-thumb {
+            height: 120px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .quality-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .quality-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--primary);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .quality-info {
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .quality-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: white;
+        }
+        
+        .quality-desc {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Combined Episode Badge */
+        .combined-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--secondary);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        /* Episode Info Display */
+        .episode-info {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .episode-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: white;
+            margin: 0;
+        }
+        
+        .episode-meta {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .episode-season, .episode-number {
+            background: var(--primary);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .episode-quality {
+            background: var(--success);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        /* Modal Video Player */
+        .modal-content {
+            background: var(--darker);
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .modal-header {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px 20px;
+        }
+        
+        .modal-title {
+            font-weight: 600;
+            color: white;
+        }
+        
+        .btn-close {
+            filter: invert(1);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        }
+        
+        .video-player {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+        }
+        
+        .player-controls {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .control-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            font-size: 1.1rem;
+        }
+        
+        .control-btn:hover {
+            background: var(--primary);
+            transform: scale(1.05);
+        }
+        
+        .control-btn.play {
+            background: var(--success);
+        }
+        
+        .control-btn.pause {
+            background: var(--warning);
+        }
+        
+        .control-btn.fullscreen {
+            background: var(--secondary);
+        }
+        
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 30px 0;
+            margin-top: 40px;
+            text-align: center;
+        }
+        
+        .telegram-link {
+            display: inline-flex;
+            align-items: center;
+            background: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+        
+        .telegram-link:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            color: white;
+        }
+        
+        .telegram-link i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .copyright {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .quality-card {
+                width: 150px;
+            }
+            
+            .brand-logo {
+                font-size: 1.6rem;
+            }
+            
+            .section-title {
+                font-size: 1.3rem;
+            }
+            
+            .episode-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .episode-meta {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .quality-cards {
+                gap: 10px;
+            }
+            
+            .quality-card {
+                width: calc(50% - 20px);
+            }
+            
+            .control-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .episode-title {
+                font-size: 1.1rem;
+            }
+            
+            .episode-meta {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+    </style>
+</head>
+<body>
+
+
+    <main class="container my-4">
+        <div class="search-container fade-in">
+            <input type="text" class="search-input" placeholder="Search for episodes...">
+        </div>
+        
+        <div class="season-nav fade-in" id="season-nav">
+            </div>
+        
+        <section class="quality-section fade-in">
+            <h2 class="section-title" id="season-title">Maulana-Rumi - All Episodes</h2>
+            
+            <div class="quality-cards" id="episodes-container">
+                </div>
+        </section>
+    </main>
+
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="videoModalLabel">M-ShahTV - Maulana-Rumi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="pauseVideo()"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="episode-info" id="episode-info">
+                        <h3 class="episode-title" id="current-episode-title">Episode 1</h3>
+                        <div class="episode-meta">
+                            <span class="episode-season" id="current-season">Maulana-Rumi </span>
+                            <span class="episode-number" id="current-episode">Episode 1</span>
+                            <span class="episode-quality" id="current-quality">HD</span>
+                        </div>
+                    </div>
+                    
+                    <div class="video-container">
+                        <video class="video-player afterglow" id="videoplayer" width="1920" height="1080" data-autoresize="fit" data-skin="dark" poster="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFlUDaQa5ETio3Blo-Hf7iXkaBye1FHjWTQVOJ1geO-g&s=10">
+                            </video>
+                    </div>
+                    <div class="player-controls">
+                        <button class="control-btn" onclick="skipBackward(15)">
+                            <i class="fas fa-backward-fast"></i>
+                        </button>
+                        <button class="control-btn" onclick="skipBackward(5)">
+                            <i class="fas fa-step-backward"></i>
+                        </button>
+                        <button class="control-btn play" onclick="playVideo()">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <button class="control-btn pause" onclick="pauseVideo()">
+                            <i class="fas fa-pause"></i>
+                        </button>
+                        <button class="control-btn fullscreen" onclick="toggleFullscreen()">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                        <button class="control-btn" onclick="skipForward(5)">
+                            <i class="fas fa-step-forward"></i>
+                        </button>
+                        <button class="control-btn" onclick="skipForward(15)">
+                            <i class="fas fa-forward-fast"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // Configuration for Ibn-e-Senah 
+        const ALP_ARSLAN = [
+            { 
+                id: 1, 
+                name: "All Episodes", 
+                episodes: 20,
+                startEpisode: 1,
+                thumbnail: "https://m.media-amazon.com/images/M/MV5BNjNhNmNjMjItZTEwMi00MDQ2LTkwODctZTU4MGY3YzFiOTVmXkEyXkFqcGc@._V1_.jpg",
+                baseUrl: "https://cdn10.urduflix.pk:8443/NiaziPlay/Maulana-Rumi/Urdu/S1/Episode-"
+            }
+        ];
+        
+        let currentSeason = 1;
+        let currentEpisode = 1;
+        let currentEpisodeTitle = "";
+        
+        // Define combined episodes with their custom URLs - **This object is now empty**
+        const combinedEpisodes = {};
+        
+        // Generate episode data for Al-Hashashin
+        function generateEpisodes(seasonId) {
+            const episodes = [];
+            const season = ALP_ARSLAN.find(s => s.id === seasonId);
+            const totalEpisodes = season.episodes;
+            const startEpisode = season.startEpisode;
+            
+            // Generate all 29 episodes
+            for (let i = 0; i < totalEpisodes; i++) {
+                const episodeNum = startEpisode + i;
+                
+                // Check if this episode is part of a combined episode (will always be false now)
+                let title, description, isCombined = false, url;
+                
+                if (combinedEpisodes[episodeNum]) {
+                    // This block will no longer execute
+                    title = combinedEpisodes[episodeNum].title;
+                    description = combinedEpisodes[episodeNum].description;
+                    isCombined = combinedEpisodes[episodeNum].isCombined;
+                    url = combinedEpisodes[episodeNum].url;
+                    
+                    // Skip the next episode since it's combined with this one
+                    i++; // Skip the next episode number
+                } else {
+                    // Regular episode logic
+                    title = `Episode ${episodeNum}`;
+                    description = `Maulana-Rumi - Episode ${episodeNum}`;
+                    url = `${season.baseUrl}${episodeNum}.mp4/tracks-v1a1/mono.m3u8`;
+                }
+                
+                episodes.push({
+                    id: episodeNum,
+                    title: title,
+                    description: description,
+                    thumbnail: season.thumbnail,
+                    quality: "HD",
+                    url: url,
+                    isCombined: isCombined
+                });
+            }
+            
+            return episodes;
+        }
+        
+        // Display episodes for Al-Hashashin
+        function displayEpisodes(seasonId) {
+            const episodes = generateEpisodes(seasonId);
+            const container = document.getElementById('episodes-container');
+            container.innerHTML = '';
+            
+            for (let i = 0; i < episodes.length; i++) {
+                const episode = episodes[i];
+                const card = document.createElement('div');
+                card.className = 'quality-card fade-in';
+                card.setAttribute('data-bs-toggle', 'modal');
+                card.setAttribute('data-bs-target', '#videoModal');
+                card.onclick = () => {
+                    currentEpisode = episode.id;
+                    currentEpisodeTitle = episode.title;
+                    loadVideoStream(episode.url, episode.quality, episode.title);
+                    updateEpisodeInfo(seasonId, episode.id, episode.title, episode.quality);
+                };
+                
+                let badgeHTML = `<div class="quality-badge">${episode.quality}</div>`;
+                if (episode.isCombined) {
+                    badgeHTML += `<div class="combined-badge">2 Episodes in</div>`;
+                }
+                
+                card.innerHTML = `
+                    <div class="quality-thumb">
+                        <img src="${episode.thumbnail}" alt="${episode.title}">
+                        ${badgeHTML}
+                    </div>
+                    <div class="quality-info">
+                        <div class="quality-name">${episode.title}</div>
+                        <div class="quality-desc">${episode.description}</div>
+                    </div>
+                `;
+                
+                container.appendChild(card);
+            }
+        }
+        
+        // Update episode information display
+        function updateEpisodeInfo(seasonId, episodeId, title, quality) {
+            document.getElementById('current-episode-title').textContent = title;
+            document.getElementById('current-season').textContent = `Maulana-Rumi`;
+            document.getElementById('current-episode').textContent = `Episode ${episodeId}`;
+            document.getElementById('current-quality').textContent = quality;
+        }
+        
+        // Generate season navigation
+        function generateSeasonNav() {
+            const nav = document.getElementById('season-nav');
+            nav.innerHTML = '';
+            
+            ALP_ARSLAN.forEach(season => {
+                const button = document.createElement('a');
+                button.className = `season-btn active`;
+                button.href = '#';
+                button.textContent = season.name;
+                button.onclick = (e) => {
+                    e.preventDefault();
+                    changeSeason(season.id);
+                };
+                
+                nav.appendChild(button);
+            });
+        }
+        
+        // Change season
+        function changeSeason(seasonId) {
+            currentSeason = seasonId;
+            
+            // Update season title
+            document.getElementById('season-title').textContent = `Ibn-e-Senah - ${ALP_ARSLAN.find(s => s.id === seasonId).name}`;
+            
+            // Update active season button
+            document.querySelectorAll('.season-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelectorAll('.season-btn')[seasonId - 1].classList.add('active');
+            
+            // Display episodes for new season
+            displayEpisodes(currentSeason);
+        }
+        
+        // Video player functions
+        function loadVideoStream(url, quality, title) {
+            // Update modal title with quality info
+            document.getElementById('videoModalLabel').textContent = `M-ShahTV - ${title} (${quality})`;
+            
+            // Set the video source
+            const player = afterglow.getPlayer('videoplayer');
+            player.pause();
+            player.currentTime(0);
+            player.src(url);
+            
+            // Auto-play when modal opens
+            $('#videoModal').on('shown.bs.modal', function () {
+                setTimeout(() => {
+                    player.play();
+                }, 500);
+            });
+        }
+        
+        function playVideo() {
+            afterglow.getPlayer('videoplayer').play();
+        }
+        
+        function pauseVideo() {
+            afterglow.getPlayer('videoplayer').pause();
+        }
+        
+        function skipForward(seconds) {
+            const player = afterglow.getPlayer('videoplayer');
+            player.currentTime(player.currentTime() + seconds);
+        }
+        
+        function skipBackward(seconds) {
+            const player = afterglow.getPlayer('videoplayer');
+            player.currentTime(player.currentTime() - seconds);
+        }
+        
+        function toggleFullscreen() {
+            afterglow.getPlayer('videoplayer').requestFullscreen();
+        }
+        
+        // Initialize the page
+        $(document).ready(function() {
+            // Generate season navigation
+            generateSeasonNav();
+            
+            // Display all episodes for Al-Hashashin
+            displayEpisodes(currentSeason);
+            
+            // Search functionality
+            $(".search-input").on("keyup", function() {
+                const value = $(this).val().toLowerCase();
+                $(".quality-card").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                });
+            });
+            
+            // Add animation to elements when they come into view
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all quality cards
+            document.querySelectorAll('.quality-card').forEach(function(card) {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
